@@ -1,0 +1,26 @@
+table, th, td {
+    border: 2px solid;
+    width: 500px;
+  }
+
+  caption {
+    display: table-caption;
+    text-align: center;
+  }
+
+  tr:nth-child(even) {
+    background-color: white;
+  }
+
+  tr:nth-child(odd) {
+    background-color: var(--culoare2);
+  }
+
+tr:hover :not(th){
+  background-color: var(--culoare6);
+  transition: 0.5s linear;
+}
+
+#anunturi{
+  overflow-x:scroll;
+}

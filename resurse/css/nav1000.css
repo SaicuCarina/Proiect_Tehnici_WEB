@@ -1,0 +1,16 @@
+body{
+    --inaltime-meniu: 35px;
+    --latime-buton: 100px;
+}
+
+#acasa-mic{
+    display: none;
+}
+
+#acasa{
+    display: block;
+}
+
+a:hover .arrow{
+    display: none;
+}

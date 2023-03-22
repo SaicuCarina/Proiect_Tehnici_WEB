@@ -1,0 +1,41 @@
+.btn-group a  {
+  background-color: val(--culoare4);
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  color: purple;
+  padding: 6px 3px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  border-top: 10px solid purple;
+  margin-left:4px;
+  margin-top:-4.5px;
+  border-style: 2px;
+}
+
+.btn-group a:hover{
+    background-color: white;
+    transition: all 1s linear;
+}
+
+.btn-group{
+    display:flex;
+    position:relative;
+    flex-direction:row;
+    margin-top:1px;
+    margin-left: -4px;
+  }
+
+
+#container{
+  display:flex;
+  flex-direction: column;
+  position: relative;
+}
+
+iframe{
+  height: 310px;
+  width:100%;
+  max-width: 500px;
+
+}

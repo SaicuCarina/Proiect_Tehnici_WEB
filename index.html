@@ -1,0 +1,323 @@
+<!DOCTYPE html> <!--document de tip html-->
+<html lang="ro"> <!--am setat limba romana-->
+ <head>
+
+   <title>Raftul comun</title>
+
+  <meta charset="UTF-8"><!-- codificarea în memorie a caracterelor-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- va fi explicat când ajungem la CSS -->
+  <meta name="keywords" content="carte, bestseller, carti, nou, volum, serie, romantic, actiune, horror, istorie, fictiune, educational, copii"><!--cuvintele cheie ale paginii; majoritatea motoarelor de căutare ignoră keywords -->
+  <meta name="description" content="Carti online, Audiobook-uri, promotii, cele mai bune preturi"><!-- descrierea paginii, adesea apare sub link când sunt afișate rezultatele căutării -->
+  <meta name="author" content="Saicu Carina">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./resurse/ico/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./resurse/ico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./resurse/ico/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="stylesheet" href="resurse/css/general.css" type="text/css" />
+  <link rel="stylesheet" href="resurse/css/nav.css" type="text/css" />
+  <link rel="stylesheet" href="resurse/css/yt.css" type="text/css" />
+  <link rel="stylesheet" href="resurse/css/tabel.css" type="text/css" />
+  <link rel="stylesheet" href="resurse/css/general1000.css" type="text/css" media="screen and (max-width:1000px)" />
+  <link rel="stylesheet" href="resurse/css/general700.css" type="text/css" media="screen and (max-width:700px)" />
+
+  <link rel="stylesheet" href="resurse/css/nav1000.css" type="text/css" media="screen and (max-width:1000px)" />
+  <link rel="stylesheet" href="resurse/css/nav700.css" type="text/css" media="screen and (max-width:700px)" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+
+ </head>
+ <div id="watermark"></div>
+  <div id="absolut"></div>
+
+ <body>
+
+  <nav>
+
+    <label id="hamburger" for="ch-menu">
+      <img src="resurse/imagini/more.png" alt="menu">
+    </label>
+    <input id="ch-menu" type="checkbox">
+    <ul class="meniu">
+      <li>
+        <div id="acasa"><span class="fas fa-regular fa-house"></span> Acasa</div>
+        <div id="acasa-mic"><span class="fas fa-regular fa-house"></span></div>
+      
+        <ul>
+
+          <li><a href="#lista-utilizatori"><span class="arrow">→</span>Bestseller</a></li>
+          <li><div><span class="arrow">→</span>Audiobook</div></li>
+
+        </ul>
+
+      </li>
+      <li><div>Noutati <i class="fa-regular fa-star"></i></div></li>
+
+      <li><a href="#promotii"><div>Promotii <i class="fa-solid fa-book"></i></div></a></li>
+
+    </ul>
+  </nav>
+
+<main>
+
+    
+  <div id="grid-pagina">
+      <section id="welcome">
+        <h1>Raftul comun</h1>
+
+ 
+      </section>
+
+      <section id="prezentare">
+        <h2>Acasa</h2>
+
+         <p>Acest site este destinat persoanelor de toate varstele, de la copii pana la adulti, iubitorilor de carti si de literatura. <b>Raftul comun</b> este un site comercial unde gasiti cele mai bune preturi pentru cartile voastre pereferate, atat in format fizic cat si audio.</p>
+
+         <p>Genurile de carti de care puteti dispune ce site-ul nostru sunt:</p>
+         <ul>
+       
+          <li>carti romantice</li>
+           <li>carti de istorie</li>
+           <li>carti educative</li>
+           <li>carti de fictiune</li>
+           <li>carti de stiinta</li>
+           <li>carti de actiune</li>
+           <li>carti pentru copii</li>
+        </ul>
+
+        <figure>
+          <picture>
+              <source media="(max-width: 600px)" srcset="./resurse/imagini/carte1.jpg">
+              <source media="(max-width: 1000px)" srcset="./resurse/imagini/carte2.jpg">
+              <source media="(max-width: 1800px)" srcset="./resurse/imagini/carte3.jpg">
+              <img src="./resurse/imagini/carte3.jpg" alt="Sigla" title="Sigla">
+              <!--<figurecaption>Magazin de muzică</figurecaption>-->
+          </picture>
+      </figure>
+
+      <div id="descarca">
+  <p>Daca iti place sigla nostra ai optiunea sa o descarci aici: </p>
+
+  <a id="sigla" href="./resurse/imagini/carte3.jpg" download target="_blank" title="Sigla">Descarca aici</a>
+</div>
+      </section>
+
+      <section id="promotii">
+        <h2>Promotii</h2>
+
+        <!--
+      <pre>
+         ______     ______     ______                ______    ___________   0   0
+        |      |   |      |   |      |   |\    /|   |      |        |        
+        |      |   |      |   |      |   | \  / |   |      |        |        |   |  
+        |______|   |______|   |      |   |  \/  |   |      |        |        |   |
+        |          |\         |      |   |      |   |      |        |        |   |
+        |          | \        |      |   |      |   |      |        |        |   |
+        |          |  \       |______|   |      |   |______|        |        |   |
+                                                                  
+                                                                    )             
+
+      </pre>
+
+    -->
+    
+      <p><b>Raftul comun</b> dispune de o serie de <b>PROMOTII</b> distincte in fiecare saptamana!</p>
+
+      <p><strong>! SUPER PROMOTIE !</strong></p>
+      <p><strong>Orice vizitator nou va dispune de o reducere de <del>20%</del> <u>35%</u> la prima comanda!</strong></p>
+      <p>Pentru a stii cum se calculeaza reducerea aveti mai jos formula corespunzatoare: </p>
+      <mrow>
+        <mi><i>pret_nou</i></mi>
+        <mo>=</mo>
+        <mi>pret_initial</mi>
+        <mo>-</mo>
+        <mrow><mo>(</mo><mi>pret_initial</mi><mo>/</mo><mi>100</mi><mo>)</mo><mo>*</mo><mi><b>35</b></mi></mrow>
+       </mrow>
+      </section>
+
+      <section id="lista-utilizatori">
+        <h3>Bestseller</h3>
+
+    <p>Cele mai vandute articole de pe site-ul nostru le gasiti chiar aici!</p>
+      </section>
+
+
+    <section id="intrebari">
+        <h2>Intrebari frecvente</h2>
+        <p>Intrebari frecvente</p>
+    <details>
+      <summary>Cand vor fi disponibile din nou anumite produse in site?</summary>
+      <p>Stocurile se actualizeaza in fiecare luna, insa pentru anumite produse acest proces este mult mai rapid.</p>
+    </details>
+
+    <details>
+      <summary>Se pot efectua livrari internationale?</summary>
+      <p>Momentan site-ul nostru NU permite livrari internationale.</p>
+    </details>
+
+    <details>
+      <summary>In cat timp se raspund solicitarilor trimise via email?</summary>
+      <p>Termenul maxim de raspuns pentru solicitarile trimise via email este de maxim 24-48 h.</p>
+    </details>
+      </section>
+
+      <section id="calendar">
+        <h2>Calendar</h2>
+        <p>Calendarul nu este inca disponibil pe site!</p>
+      </section>
+
+      <section id="anunturi">
+        <h2>Program cu publicul</h2>
+        
+          <table>
+
+            <thead>
+            <tr>
+              <th></th>
+              <th>Zi saptamana</th>
+              <th>Deschidere</th>
+              <th>Pauza de masa</th>
+              <th>Inchidere</th>
+            </tr>
+            </thead>
+
+
+          <tbody>
+            <tr>
+              <td rowspan="7">Fara sarbatori</td>
+              <td>Luni</td>
+              <td>9:00</td>
+              <td>13:30 - 14:30</td>
+              <td>20:00</td>
+            </tr>
+
+            <tr>
+              <td>Marti</td>
+              <td>9:00</td>
+              <td>13:30 - 14:30</td>
+              <td>20:00</td>
+            </tr>
+          
+            <tr>
+              <td>Miercuri</td>
+              <td>9:00</td>
+              <td>13:30 - 14:30</td>
+              <td>20:00</td>
+            </tr>
+
+            <tr>
+              <td>Joi</td>
+              <td>9:00</td>
+              <td>13:30 - 14:30</td>
+              <td>20:00</td>
+            </tr>
+
+            <tr>
+              <td>Vineri</td>
+              <td>9:00</td>
+              <td>13:30 - 14:30</td>
+              <td>20:00</td>
+            </tr>
+
+            <tr>
+              <td>Sambata</td>
+              <td>10:00</td>
+              <td>13:30 - 14:30</td>
+              <td>19:00</td>
+            </tr>
+
+            <tr>
+              <td>Duminica</td>
+              <td>11:00</td>
+              <td>13:00 - 14:00</td>
+              <td>18:00</td>
+            </tr>
+          </tbody>
+
+          <tfoot>
+
+          </tfoot>
+
+          <tr>
+            În zilele de sărbătoare programul poate sa difere.
+            <br><br>
+
+          </tr>
+
+          </table>
+      </section>
+
+
+
+      <section id="date-site-server">
+        <h3>Audiobook</h3>
+
+      <p>Pentru cine prefera sa aiba o zi relaxanta ascultand o carte buna, sectiunea de audiobook-uri va pregateste cele mai diverse variante de unde puteti alege!</p>
+      </section>
+
+      <section id="diverse">
+        <p>In cazul in care vrei sa citesti ceva, dar nu ai idee ce sa alegi, poti incerca recomandarile oamenilor de pe forumul urmator: <a href="https://forum.softpedia.com/topic/48175-recomandari-carti/" target="_blank">Forum - Link extern</a></p>
+
+
+    <p>Daca inca esti nehotarat in privinta cartii pe care ar trebui sa o alegi, ai mai joi 2 videoclipuri care te-ar putea ajuta: </p>
+
+    <div id="container">
+      <div class="container-iframe">       
+        <iframe name="ifr-video" src="https://www.youtube.com/embed/PxlvAaz83Xw" 
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="btn-group">
+            <a href="https://www.youtube.com/embed/PxlvAaz83Xw" target="ifr-video">Video 1</a>
+            <a href="https://www.youtube.com/embed/SNGfesoJ0Uk" target="ifr-video" >Video 2</a>
+          </div>  
+      </div>
+    </div>
+        
+        </section>
+      
+
+
+      <section id="footer">
+
+        <section class="link">
+  
+        <p>Contact:</p>
+        <div id="link">
+        <a href="tel:+40759472971">Telefon</a>
+        <br>
+        <a href="https://wa.link/6e5s3i">Link WhatsApp</a>
+        <br>
+        <a href="mailto:Raftul_Comun@gmail.com">Mail</a>
+        <br>
+        <a href="https://goo.gl/maps/DYxfcuZfAWw68jnRA" target="_blank">Adresa</a>
+
+      </section>
+
+        <br>
+
+      </div>
+
+        <div id="banner">Acesta este un proiect scolar!</div>
+
+        <p><small>Copyright &copy;Raftul Comun</small></p>
+        <p><time datetime="2023-02-01 12:38">2023-02-01 12:38</time></p>
+      </section>
+    </div>
+
+    <div id="outer1">
+      <a id="back-to-top1" href="#">
+          <div id="inner1" title="Top">&#129081;</div>
+      </a>
+  </div>
+
+</main>
+
+  </body>
+</html>

@@ -1,0 +1,324 @@
+html{
+    font-size: 18px;
+}
+
+body{
+    --culoare1: #FCB9AC;
+    --culoare2: #DE97DA;
+    --culoare3: #E8ACFC;
+    --culoare4: #DE9897;
+    --spatiere-pagina: 50px;
+    --padding-section: 15px;
+    --culoare5:#C886FF;
+    --culoare6:#9377FA;
+}
+
+body{
+    background-color: var(--culoare1);
+    padding-left: var(--spatiere-pagina);
+    padding-right: var(--spatiere-pagina);
+    min-width: 450px;
+    margin: 0;
+}
+
+h1{
+    font-size: 2.5rem;
+}
+
+h2{
+    font-size: 2rem;
+}
+
+#grid-pagina > *{
+    border: 3px solid var(--culoare6); 
+    padding:var(--padding-section)
+}
+
+#grid-pagina{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-areas: "z-welcome z-welcome z-welcome z-welcome"
+                        "z-prezentare z-prezentare z-prezentare z-prezentare"
+                        "z-lista-utilizatori z-date-utilizatori-statistica z-date-utilizatori-statistica z-date-site-server"
+                        "z-calendar z-calendar z-tabel z-tabel"
+                        "z-anunturi z-anunturi z-tabel z-tabel"
+                        "z-diverse z-diverse z-diverse z-diverse"
+                        "z-footer z-footer z-footer z-footer"
+                        ;
+    gap: 20px 10px; /* spatiere intre griduri */
+
+}
+#welcome{
+    grid-area: z-welcome;
+}
+
+#prezentare{
+    grid-area: z-prezentare;
+}
+
+#promotii{
+    grid-area: z-tabel;
+}
+
+#calendar{
+    grid-area: z-calendar;
+}
+
+#anunturi{
+    grid-area: z-anunturi;
+}
+
+#list-utilizatori{
+    grid-area: z-utilizatori;
+}
+
+#intrebari{
+    grid-area: z-date-utilizatori-statistica;
+}
+
+#date-site-server{
+    grid-area: z-date-site-server;
+}
+
+#diverse{
+    grid-area: z-diverse ;
+}
+
+#footer{
+    grid-area: z-footer;
+}
+
+img{
+    width:100%;
+    max-width:800px;
+}
+
+#outer1 {
+    position: fixed;
+    border: 5px solid purple;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    width: 55px;
+    height: 55px;
+    right: 25px;
+    bottom: 25px;
+    box-shadow: inset 0px 0 10px 5px rgba(0, 0, 0, 0.5);
+    
+
+}
+
+#inner1 {
+    font-size: 80px;    
+    margin:auto;
+    margin-left:1px;
+    margin-top: -25px;
+}
+
+#outer1:hover #inner1 {
+    transform: scale(1.2);
+    color: var(--culoare6);
+    transition: all 0.5s linear;
+}
+
+#outer1:hover {
+    background-color: var(--culoare3);
+    transition: all 0.5s linear;
+}
+
+#back-to-top1 {
+    color: purple;
+    text-decoration: none;
+}
+
+#welcome{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#header, #footer{
+    font-family: 'Courier New', Courier, monospace;
+    border: 3px solid palevioletred ;
+    text-align: center;
+    border-radius: 25%;
+    border-left: transparent;
+    border-right: transparent;
+}
+
+
+#sigla{
+    text-decoration: none;
+    color: solid black;
+}
+
+.arrow {
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: all 0.3s linear;
+    position: absolute;
+    left: 5px;
+    
+}
+
+a:hover .arrow {
+    opacity: 1;
+    display: block;
+    transform: translateX(70%);
+}
+
+@media print {
+
+    #banner {
+        display: block;
+        border: 4px solid black;
+        height: 30px;
+        width: 70%;
+        margin: 0;
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        line-height: 30px;
+    }
+
+    img,
+    video,
+    #descarca
+    iframe,
+    #outer1,
+    #inner1,
+    link,
+    .taburi-iframe,
+    #container,
+    .btn-group,
+    .container-iframe,
+    figcaption,
+    #descarca{
+        display: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    h1{
+        text-align: center;
+        margin-top: 50%;
+    }
+
+    nav{
+        page-break-after: always;
+    }
+
+    ul.meniu{
+        all: unset !important;
+    }
+
+    #header{
+        border: none;
+    }
+    #footer{
+        page-break-before: always;
+        border: none;
+    }
+
+    #watermark
+    {
+        display: block;
+        position: fixed;
+        bottom:0;
+        color:rgba(0,0,0,0.4);
+        right:0;
+    }
+
+    #watermark::after{
+        
+        opacity:0.4;
+        padding:5px;
+        display: block;
+        background: white;
+        border:2px solid black;
+        border-top-left-radius:10px;
+        border-bottom-left-radius:10px;
+        border-right:none;
+        content:"Saicu Carina";
+    }
+
+    #grid-pagina{
+        display: block;
+    }
+
+    #diverse{
+        display: none;
+    }
+    
+    @page {
+        size: A4 portrait;
+        margin-bottom:2cm;
+        margin-top:2cm;
+        counter-increment: page;
+            
+    }
+    
+    @page:left{
+    
+        margin-left:3cm;
+        margin-right:1cm;
+        border-radius: 20cm;
+    }
+    
+    @page:right{
+    
+        margin-right:3cm;
+        margin-left:1cm;
+    }
+
+    #welcome{
+        border: none;
+
+    }
+    
+    #prezentare{
+        border: none;
+
+    }
+    
+    #promotii{
+        border: none;
+
+    }
+    
+    #calendar{
+        border: none;
+
+    }
+    
+    #anunturi{
+        border: none;
+
+    }
+    
+    #lista-utilizatori{
+        border: none;
+
+    }
+    
+    #intrebari{
+        border: none;
+
+    }
+    
+    #date-site-server{
+        border: none;
+
+    }
+    
+    #diverse{
+        border: none;
+
+    }
+    
+    #footer{
+        border: none;
+
+    }
+    
+}

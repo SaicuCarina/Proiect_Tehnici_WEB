@@ -1,0 +1,26 @@
+* {
+    transition: none ;
+    animation: none ;
+}
+
+html{
+    font-size: 13px;
+}
+
+body{
+    --spatiere-pagina: 10px;
+    --padding-section: 5px;
+}
+
+#grid-pagina{
+    display: block;
+}
+
+#grid-pagina > *{
+    margin-bottom: 15px;
+}
+
+#tabel{
+    border: none !important;
+    border-style: none !important;
+}
