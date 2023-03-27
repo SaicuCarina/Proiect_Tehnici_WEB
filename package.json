@@ -2,5 +2,38 @@
   "dependencies": {
     "ejs": "^3.1.9",
     "express": "^4.18.2"
-  }
+  },
+  "name": "tehnici-web",
+  "version": "1.0.0",
+  "description": "Site despre carti",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaicuCarina/Nou_TW.git"
+  },
+  "keywords": [
+    "carte",
+    "bestseller",
+    "carti",
+    "nou",
+    "volum",
+    "serie",
+    "romantic",
+    "actiune",
+    "horror",
+    "istorie",
+    "fictiune",
+    "educational",
+    "copii"
+  ],
+  "author": "Saicu Carina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaicuCarina/Nou_TW/issues"
+  },
+  "homepage": "https://github.com/SaicuCarina/Nou_TW#readme"
 }
