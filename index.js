@@ -206,6 +206,8 @@ function initErori() {
     //     console.log(vErori[i].imagine);
     // } o opriune de a parcurge vectorul, dar nu e cea mai buna
 
+
+    
     for (let eroare of vErori) { //echivalent cu iteratorul din C++
         eroare.imagine = "/" + obGlobal.obErori.cale_baza + "/" + eroare.imagine;
         // eroare.imagine = path.join(obGlobal.obErori.cale_baza, eroare.imagine);
