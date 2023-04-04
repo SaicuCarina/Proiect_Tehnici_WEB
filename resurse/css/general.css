@@ -322,3 +322,60 @@ a:hover .arrow {
     }
     
 }
+
+div{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 0%;
+    background-blend-mode: lighten;
+}
+
+div.link:hover{
+    background-size: 10%;
+    color: var(--culoare1);
+    background-image: radial-gradient(
+                                     var(--culoare3) 40%,
+                                     var(--culoare1) 80%,
+                                     var(--culoare1) 100%);
+    transition: all 1s linear;
+    
+}
+
+div.link:visited{
+    color: var(--culoare1);
+}
+
+div.link:active {
+    border: 1px solid var(--culoare6);
+    transition: all 0.5s linear;
+}
+
+a.link[href^="http"]::before{
+    content: "⮳";
+    font-size:1.5em;
+}
+
+a.link[href^="http"]:hover::before{
+    color: var(--culoare6);
+    transition: color 0.3s linear;
+}
+
+video {
+    max-width: 700px;
+    max-height: 350px;
+    width: auto;
+    height: auto;
+    min-height: 200px;
+    min-width: 250px;
+}
+
+::cue {
+    background-color: white; /*rgba(255, 255, 255, 0.3);*/
+    opacity: 0.3;
+}
+
+::cue {
+    color: black;
+}
+
+

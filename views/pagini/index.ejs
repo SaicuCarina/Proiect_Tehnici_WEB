@@ -213,11 +213,13 @@
       <section id="date-site-server">
         <h3>Audiobook</h3>
 
-      <p>Pentru cine prefera sa aiba o zi relaxanta ascultand o carte buna, sectiunea de audiobook-uri va pregateste cele mai diverse variante de unde puteti alege!</p>
+      
+        <p>Pentru cine prefera sa aiba o zi relaxanta ascultand o carte buna, sectiunea de audiobook-uri va pregateste cele mai diverse variante de unde puteti alege!</p>
+      
       </section>
 
       <section id="diverse">
-        <p>In cazul in care vrei sa citesti ceva, dar nu ai idee ce sa alegi, poti incerca recomandarile oamenilor de pe forumul urmator: <a href="https://forum.softpedia.com/topic/48175-recomandari-carti/" target="_blank">Forum - Link extern</a></p>
+        <p>In cazul in care vrei sa citesti ceva, dar nu ai idee ce sa alegi, poti incerca recomandarile oamenilor de pe forumul urmator: <a class="link" href="https://forum.softpedia.com/topic/48175-recomandari-carti/" target="_blank">Forum - Link extern</a></p>
 
 
     <p>Daca inca esti nehotarat in privinta cartii pe care ar trebui sa o alegi, ai mai joi 2 videoclipuri care te-ar putea ajuta: </p>
@@ -232,6 +234,30 @@
           </div>  
       </div>
     </div>
+
+    <div id="grid-galerie">
+      <% for (let imag of locals.imagini) { 
+        d=new Date();
+        var v_luni=["ianuarie", "februarie", "martie","aprilie","mai","iunie","iulie","august","septembrie","octombrie","noiembrie","decembrie"]
+
+        if(imag.luni && imag.luni.includes(v_luni[d.getMonth()])) {
+        
+        %>
+         
+              <figure>
+                  <picture>
+                      <source srcset="<%- imag.fisier_mediu %>" media="(max-width:1000px)" />
+                      <img src="<%- imag.fisier %>" alt="imagine">
+                  </picture>
+                  <figcaption><%- imag.descriere %></figcaption>
+              </figure>
+  
+  
+           <% }  %>    
+      <% }  %>
+
+      
+  </div>
         
         </section>
 
