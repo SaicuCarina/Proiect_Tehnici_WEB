@@ -1,0 +1,45 @@
+@use '../../node_modules/bootstrap/scss/bootstrap.scss' with
+(
+   
+    // culorile de background
+    $primary: pink,
+    $secondary: purple,
+
+    // culori font
+    $body-color: black,
+
+    // dimensiuni de ecran diferite pentru ecrane medii și mari
+    $grid-breakpoints: (
+        md: 770px, 
+        lg: 995px
+    ),
+
+    // dimensiunea razelor de border
+
+    $border-radius: 0.2rem,
+    $border-radius-sm: 0.1rem,
+    $border-radius-lg: 0.4rem,
+    $border-radius-xl: 1rem,
+    $border-radius-2xl: 2rem,
+    $border-radius-pill: 50rem,
+
+    // dimensiunea literelor heading-urilor
+
+    $display-font-sizes: (
+        1: 2rem,
+        2: 1.75rem,
+        3: 1.5rem
+    ),
+
+    // familia de font implicită
+
+    $font-family-base: "Courier New",
+
+   
+);
+
+ //in plus
+
+ .btn-primary{
+    --bs-btn-color: #d63384;
+}

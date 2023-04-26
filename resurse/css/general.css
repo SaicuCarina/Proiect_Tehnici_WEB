@@ -11,6 +11,7 @@ body{
     --padding-section: 15px;
     --culoare5:#C886FF;
     --culoare6:#9377FA;
+    --culoare7:#6644e1;
 }
 
 body{
@@ -110,12 +111,12 @@ img{
 #inner1 {
     font-size: 80px;    
     margin:auto;
-    margin-left:1px;
-    margin-top: -25px;
+    margin-left:-4px;
+    margin-top: -35px;
 }
 
 #outer1:hover #inner1 {
-    transform: scale(1.2);
+    transform: scale(1.1);
     color: var(--culoare6);
     transition: all 0.5s linear;
 }
@@ -378,4 +379,36 @@ video {
     color: black;
 }
 
+#relexie {
+    width: fit-content;
 
+  }
+  
+#reflexie {
+    content: "";
+    left: 180px;
+    right: 0;
+    z-index: -1;
+    transform: scaleY(-1);
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+    rotate: 195deg;
+    margin-bottom: 2cm;
+    margin-right: 21cm;
+  }
+
+.reflex:hover{
+    color: var(--culoare6);
+    transition: color 0.3s linear;
+}
+
+#reflexie:hover{
+    color: var(--culoare7) !important;
+    transition: color 0.3s linear;
+}
+  
+#fara-relexie {
+    rotate:-15deg;
+    margin-bottom: 2cm;
+}
+
+  

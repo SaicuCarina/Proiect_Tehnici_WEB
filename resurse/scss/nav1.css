@@ -1,6 +1,6 @@
 /*cod pt meniu*/
-#hamburger, #ch-menu {
-  display: none;
+#hamburger, #ch-menu{
+  display: none !important;
 }
 
 body {

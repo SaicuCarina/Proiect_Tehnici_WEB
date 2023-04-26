@@ -9,7 +9,7 @@
   font-size: 14px;
   border-top: 10px solid purple;
   margin-left:4px;
-  margin-top:-4.5px;
+  margin-top:-4px;
   border-style: 2px;
 }
 
@@ -22,8 +22,8 @@
     display:flex;
     position:relative;
     flex-direction:row;
-    margin-top:1px;
-    margin-left: -4px;
+    margin-top:-0.5px;
+    margin-left: -4.5px;
   }
 
 

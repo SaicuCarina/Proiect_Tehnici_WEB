@@ -32,7 +32,7 @@
         <h2>Acasa</h2>
 
          <p>Acest site este destinat persoanelor de toate varstele, de la copii pana la adulti, iubitorilor de carti si de literatura. <b>Raftul comun</b> este un site comercial unde gasiti cele mai bune preturi pentru cartile voastre pereferate, atat in format fizic cat si audio.</p>
-
+         <button class="btn btn-primary">ceva</button>
          <p>Genurile de carti de care puteti dispune ce site-ul nostru sunt:</p>
          <ul>
        
@@ -46,7 +46,7 @@
         </ul>
 
         <figure>
-          <picture>
+          <picture class="duotone">
               <source media="(max-width: 600px)" srcset="./resurse/imagini/carte1.jpg">
               <source media="(max-width: 1000px)" srcset="./resurse/imagini/carte2.jpg">
               <source media="(max-width: 1800px)" srcset="./resurse/imagini/carte3.jpg">
@@ -236,28 +236,26 @@
     </div>
 
     <div id="grid-galerie">
-      <% for (let imag of locals.imagini) { 
-        d=new Date();
-        var v_luni=["ianuarie", "februarie", "martie","aprilie","mai","iunie","iulie","august","septembrie","octombrie","noiembrie","decembrie"]
-
-        if(imag.luni && imag.luni.includes(v_luni[d.getMonth()])) {
-        
-        %>
-         
-              <figure>
-                  <picture>
-                      <source srcset="<%- imag.fisier_mediu %>" media="(max-width:1000px)" />
-                      <img src="<%- imag.fisier %>" alt="imagine">
-                  </picture>
-                  <figcaption><%- imag.descriere %></figcaption>
-              </figure>
-  
-  
-           <% }  %>    
-      <% }  %>
-
-      
-  </div>
+      <% let count = 0; %>
+      <% for (let imag of locals.imagini) {
+          const now = new Date();
+          const minute = now.getMinutes();
+          const quarter = Math.floor(minute / 15);
+          const v = ["1", "2", "3", "4"]; 
+          if (imag.sfert_ora && imag.sfert_ora.includes(v[quarter]) && count < 10) { %>
+          <figure>
+            <picture>
+              <source srcset="<%- imag.fisier_mediu %>" media="(max-width:1000px)" />
+              <img src="<%- imag.fisier %>" alt="imagine">
+            </picture>
+            <figcaption><%- imag.descriere %></figcaption>
+          </figure>
+          <% count++; %>
+          <div id = "gol"></div>
+          <div id = "gol2"></div>
+        <% }
+      } %>
+    </div>
         
         </section>
 
