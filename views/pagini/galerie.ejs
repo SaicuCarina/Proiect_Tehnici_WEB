@@ -1,0 +1,54 @@
+<!DOCTYPE html> <!--document de tip html-->
+<html lang="ro"> <!--am setat limba romana-->
+ <head>
+
+   <title>Raftul comun</title>
+
+  <meta name="keywords" content="carte, bestseller, carti, nou, volum, serie, romantic, actiune, horror, istorie, fictiune, educational, copii"><!--cuvintele cheie ale paginii; majoritatea motoarelor de căutare ignoră keywords -->
+  <meta name="description" content="Carti online, Audiobook-uri, promotii, cele mai bune preturi"><!-- descrierea paginii, adesea apare sub link când sunt afișate rezultatele căutării -->
+
+  <%- include("../fragmente/head.ejs") %>
+
+
+ </head>
+
+ <body>
+
+  <%- include("../fragmente/header.ejs") %>
+<main>
+
+    <h1>Best Sellers</h1>
+
+    <section>
+
+      <div id="grid-galerie">
+        <% let count = 0; %>
+        <% for (let imag of locals.imagini) {
+            const now = new Date();
+            const minute = now.getMinutes();
+            const quarter = Math.floor(minute / 15);
+            const v = ["1", "2", "3", "4"]; 
+            if (imag.sfert_ora && imag.sfert_ora.includes(v[quarter]) && count < 10) { %>
+            <figure>
+              <picture>
+                <source srcset="<%- imag.fisier_mediu %>" media="(max-width:1000px)" />
+                <img src="<%- imag.fisier %>" alt="imagine">
+              </picture>
+              <figcaption><%- imag.descriere %></figcaption>
+            </figure>
+            <% count++; %>
+            <div id = "gol"></div>
+            <div id = "gol2"></div>
+          <% }
+        } %>
+      </div>
+
+    </section>
+
+</main>
+
+
+<%- include("../fragmente/footer.ejs") %>
+
+  </body>
+</html>

@@ -12,10 +12,13 @@ body{
     --culoare5:#C886FF;
     --culoare6:#9377FA;
     --culoare7:#6644e1;
+    --mov:#9d3a9d;
+    --culoare-background:#f9e2fd;
+    --mov-inchis:#940094;
 }
 
 body{
-    background-color: var(--culoare1);
+    background-color: var(--culoare-background);
     padding-left: var(--spatiere-pagina);
     padding-right: var(--spatiere-pagina);
     min-width: 450px;
@@ -31,7 +34,7 @@ h2{
 }
 
 #grid-pagina > *{
-    border: 3px solid var(--culoare6); 
+    border: 3px solid var(--mov); 
     padding:var(--padding-section)
 }
 
@@ -96,7 +99,7 @@ img{
 
 #outer1 {
     position: fixed;
-    border: 5px solid purple;
+    border: 5px solid #800080;
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
     width: 55px;
@@ -117,17 +120,17 @@ img{
 
 #outer1:hover #inner1 {
     transform: scale(1.1);
-    color: var(--culoare6);
+    color: var(--culoare2);
     transition: all 0.5s linear;
 }
 
 #outer1:hover {
-    background-color: var(--culoare3);
+    background-color: var(--culoare2);
     transition: all 0.5s linear;
 }
 
 #back-to-top1 {
-    color: purple;
+    color: var(--mov);
     text-decoration: none;
 }
 
@@ -137,9 +140,9 @@ img{
 
 #header, #footer{
     font-family: 'Courier New', Courier, monospace;
-    border: 3px solid palevioletred ;
+    border: 3px solid var(--mov);
     text-align: center;
-    border-radius: 25%;
+    border-radius: 50%;
     border-left: transparent;
     border-right: transparent;
 }
@@ -333,17 +336,17 @@ div{
 
 div.link:hover{
     background-size: 10%;
-    color: var(--culoare1);
+    color: var(--culoare-background);
     background-image: radial-gradient(
                                      var(--culoare3) 40%,
-                                     var(--culoare1) 80%,
-                                     var(--culoare1) 100%);
+                                     var(--culoare-background) 80%,
+                                     var(--culoare-background) 100%);
     transition: all 1s linear;
     
 }
 
 div.link:visited{
-    color: var(--culoare1);
+    color: var(--culoare-background);
 }
 
 div.link:active {
@@ -397,12 +400,12 @@ video {
   }
 
 .reflex:hover{
-    color: var(--culoare6);
+    color: var(--mov);
     transition: color 0.3s linear;
 }
 
 #reflexie:hover{
-    color: var(--culoare7) !important;
+    color: var(--mov-inchis) !important;
     transition: color 0.3s linear;
 }
   
@@ -411,4 +414,47 @@ video {
     margin-bottom: 2cm;
 }
 
+
+hr {
+    height: 50px;
+    border-radius: 5px;
+    background-image: radial-gradient(white 10%, var(--mov-inchis) 35%, transparent 10%),
+        radial-gradient(white 10%, var(--mov-inchis) 35%, transparent 10%),
+        radial-gradient(white 10%, var(--mov-inchis) 35%, transparent 10%);
+    background-size: 16px 16px;
+    background-repeat: repeat-x;
+    position: relative;
+    border: 0;
+    filter: blur(0.4px);
+}
+
+hr::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 16px;
+    background-image: radial-gradient(white 1%, var(--mov-inchis) 55%, transparent 1%);
+    background-size: 16px 16px;
+    background-repeat: repeat-x;
+    background-position-x: 12px;
+    top: 8%;
+    filter: blur(0.6px);
+}
+
+hr::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 16px;
+    background-image: radial-gradient(white 10%, var(--mov-inchis) 35%, transparent 30%);
+    background-size: 16px 16px;
+    background-repeat: repeat-x;
+    top: 15%;
+    background-position-x: -10px;
+    filter: blur(0.4px);
+}
   

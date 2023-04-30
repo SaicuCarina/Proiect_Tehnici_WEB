@@ -17,7 +17,7 @@ table, th, td {
   }
 
 tr:hover :not(th){
-  background-color: var(--culoare6);
+  background-color: var(--mov);
   transition: 0.5s linear;
 }
 

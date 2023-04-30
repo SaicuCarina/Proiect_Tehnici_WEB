@@ -2,47 +2,185 @@
 	"cale_galerie":"resurse/imagini/galerie",
 	"imagini": [
 		{
-			"fisier":"briose-frisca.png",
-			"titlu":"imagine1",
-			"descriere":"Brioșe",
+			"fisier":"1.jpg",
+			"titlu":"Locul 1",
+			"descriere":"Locul 1",
 			"sfert_ora": ["1"]
 		},
 		{
-			"fisier":"clatite.png",
-			"titlu":"imagine2",
-			"descriere":"Clătite cu dulceață",
+			"fisier":"2.jpg",
+			"titlu":"Locul 2",
+			"descriere":"Locul 2",
 			"sfert_ora": ["1", "2"]
 			
 		},
 		{
-			"fisier":"gogosi.png",
-			"titlu":"imagine3",
-			"descriere":"Gogoși glazurate",
+			"fisier":"3.jpg",
+			"titlu":"Locul 3",
+			"descriere":"Locul 3",
 			"luni":["1","3"]
 		},
 		{
-			"fisier":"tort-scortisoara.png",
-			"titlu":"imagine4",
-			"descriere":"Tort cu scorțisoară",
+			"fisier":"4.jpg",
+			"titlu":"Locul 4",
+			"descriere":"Locul 4",
 			"luni":["1","4"]
 		},
 		{
-			"fisier":"prajitura-ciocolata.png",
-			"titlu":"imagine5",
-			"descriere":"Prăjitură cu ciocolată",
+			"fisier":"5.jpg",
+			"titlu":"Locul 5",
+			"descriere":"Locul 5",
 			"sfert_ora": ["2"]
 		},
 		{
-			"fisier":"tarta-afine.png",
-			"titlu":"imagine6",
-			"descriere":"Tartă cu afine",
+			"fisier":"6.jpg",
+			"titlu":"Locul 6",
+			"descriere":"Locul 6",
 			"sfert_ora": ["2", "3"]
 		},
 		{
-			"fisier":"tort-trandafiri.png",
-			"titlu":"imagine7",
-			"descriere":"Tort special",
+			"fisier":"7.jpg",
+			"titlu":"Locul 7",
+			"descriere":"Locul 7",
 			"sfert_ora": ["2", "4"]
+		},
+		{
+			"fisier":"8.jpg",
+			"titlu":"Locul 8",
+			"descriere":"Locul 8",
+			"sfert_ora": ["3", "4"]
+		},
+		{
+			"fisier":"9.jpg",
+			"titlu":"Locul 9",
+			"descriere":"Locul 9",
+			"sfert_ora": ["1", "2", "3"]
+		},
+		{
+			"fisier":"10.jpg",
+			"titlu":"Locul 10",
+			"descriere":"Locul 10",
+			"sfert_ora": ["1", "2", "4"]
+		},
+		{
+			"fisier":"11.jpg",
+			"titlu":"Locul 11",
+			"descriere":"Locul 11",
+			"sfert_ora": ["1", "3", "4"]
+		},
+		{
+			"fisier":"12.jpg",
+			"titlu":"Locul 12",
+			"descriere":"Locul 12",
+			"sfert_ora": ["2", "3", "4"]
+		},
+		{
+			"fisier":"13.jpg",
+			"titlu":"Locul 13",
+			"descriere":"Locul 13",
+			"sfert_ora": ["1", "2", "3", "4"]
+		},
+		{
+			"fisier":"14.jpg",
+			"titlu":"Locul 14",
+			"descriere":"Locul 14",
+			"sfert_ora": ["1", "2"]
+		},
+		{
+			"fisier":"15.jpg",
+			"titlu":"Locul 15",
+			"descriere":"Locul 15",
+			"sfert_ora": ["1", "3"]
+		},
+		{
+			"fisier":"16.jpg",
+			"titlu":"Locul 16",
+			"descriere":"Locul 16",
+			"sfert_ora": ["1", "4"]
+		},
+		{
+			"fisier":"17.jpg",
+			"titlu":"Locul 17",
+			"descriere":"Locul 17",
+			"sfert_ora": ["2", "3"]
+		},
+		{
+			"fisier":"18.jpg",
+			"titlu":"Locul 18",
+			"descriere":"Locul 18",
+			"sfert_ora": ["2", "4"]
+		},
+		{
+			"fisier":"19.jpg",
+			"titlu":"Locul 19",
+			"descriere":"Locul 19",
+			"sfert_ora": ["3", "4"]
+		},
+		{
+			"fisier":"20.jpg",
+			"titlu":"Locul 20",
+			"descriere":"Locul 20",
+			"sfert_ora": ["1", "2", "3"]
+		},
+		{
+			"fisier":"21.jpg",
+			"titlu":"Locul 21",
+			"descriere":"Locul 21",
+			"sfert_ora": ["1", "2", "4"]
+		},
+		{
+			"fisier":"22.jpg",
+			"titlu":"Locul 22",
+			"descriere":"Locul 22",
+			"sfert_ora": ["2", "3", "4"]
+		},
+		{
+			"fisier":"23.jpg",
+			"titlu":"Locul 23",
+			"descriere":"Locul 23",
+			"sfert_ora": ["3", "2", "4"]
+		},
+		{
+			"fisier":"24.jpg",
+			"titlu":"Locul 24",
+			"descriere":"Locul 24",
+			"sfert_ora": ["1", "2", "3", "4"]
+		},
+		{
+			"fisier":"25.jpg",
+			"titlu":"Locul 25",
+			"descriere":"Locul 25",
+			"sfert_ora": ["2", "3"]
+		},
+		{
+			"fisier":"26.jpg",
+			"titlu":"Locul 26",
+			"descriere":"Locul 26",
+			"sfert_ora": ["1", "2", "3"]
+		},
+		{
+			"fisier":"27.jpg",
+			"titlu":"Locul 27",
+			"descriere":"Locul 27",
+			"sfert_ora": ["1", "4"]
+		},
+		{
+			"fisier":"28.jpg",
+			"titlu":"Locul 28",
+			"descriere":"Locul 28",
+			"sfert_ora": ["2", "3"]
+		},
+		{
+			"fisier":"29.jpg",
+			"titlu":"Locul 29",
+			"descriere":"Locul 29",
+			"sfert_ora": ["1", "2", "3"]
+		},
+		{
+			"fisier":"30.jpg",
+			"titlu":"Locul 30",
+			"descriere":"Locul 30",
+			"sfert_ora": ["1", "2", "3", "4"]
 		}
 	]
 }
