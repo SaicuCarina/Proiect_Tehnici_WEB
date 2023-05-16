@@ -21,9 +21,9 @@ class AccesBD{
     }
 
     initLocal(){ // se face conexiunea la baza de date
-        this.client= new Client({database:"laborator",
+        this.client= new Client({database:"bd_tw",
             user:"carina", 
-            password:"carina", 
+            password:"123456", 
             host:"localhost", 
             port:5432});
         // this.client2= new Pool({database:"laborator",
@@ -200,6 +200,7 @@ class AccesBD{
     //     let comanda=`update ${tabel} set ${campuriActualizate.join(", ")}  ${conditieWhere}`;
     //     this.client.query(comanda,valori, callback)
     // }
+
 
     delete({tabel="",conditiiAnd=[]} = {}, callback){
         let conditieWhere="";
