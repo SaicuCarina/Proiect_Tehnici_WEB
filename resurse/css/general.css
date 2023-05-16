@@ -17,6 +17,21 @@ body{
     --mov-inchis:#940094;
 }
 
+body.dark{
+    --culoare1: #ed8975;
+    --culoare2: #d967d3;
+    --culoare3: #c763e8;
+    --culoare4: #d36563;
+    --spatiere-pagina: 50px;
+    --padding-section: 15px;
+    --culoare5:#a84df3;
+    --culoare6:#7654ef;
+    --culoare7:#4c23e1;
+    --mov:#7b127b;
+    --culoare-background:#eaa0f7;
+    --mov-inchis:#6a016a;
+}
+
 body{
     background-color: var(--culoare-background);
     padding-left: var(--spatiere-pagina);

@@ -5,13 +5,30 @@ const sharp = require("sharp");
 const sass = require("sass");
 const { Client } = require("pg");
 const { Console } = require("console");
+const AccesBD= require("./module_proprii/accesbd.js");
 
-// var client= new Client({database:"douaroti",
-//         user:"bogdan",
-//         password:"tw2023pa55",
-//         host:"localhost",
-//         port:5432});
-// client.connect();
+AccesBD.getInstanta().select(
+    {tabel:"prajituri",
+    campuri:["nume", "pret", "calorii"],
+    conditiiAnd:["pret>7"]},
+    function (err, rez){
+        console.log(err);
+        console.log(rez);
+    }
+)
+
+var client= new Client({database:"bd_tw",
+        user:"carina",
+        password:"123456",
+        host:"localhost",
+        port:5432});
+client.connect();
+
+// client.query("select * from lab8_12", function(err, rez){
+//     console.log("Eroare BD",err);
+ 
+//     console.log("Rezultat BD",rez.rows);
+// });
 
 // client.query("select * from produse_test", function(err, rez){
 //     console.log("Eroare BD",err);
@@ -26,13 +43,28 @@ obGlobal = {
     obImagini: null,
     folderScss: path.join(__dirname, "resurse/scss"),
     folderCss: path.join(__dirname, "resurse/css"),
-    folderBackup: path.join(__dirname, "backup")
+    folderBackup: path.join(__dirname, "backup"),
+    optiuniMeniu:[]
 };
+
+client.query("select * from unnest(enum_range(null::tipuri_produse))", function(err, rezCategorie){ ///functia unnest() - il face sa fie vector de siruri
+    if(err){
+        console.log(err);
+    }
+    else{
+        obGlobal.optiuniMeniu=rezCategorie.rows;
+    }
+})
 
 app = express();
 app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
 app.use("/resurse", express.static(path.join(__dirname, "resurse")));
 
+app.use("/*", function(req, res, next){
+
+    res.locals.optiuniMeniu=obGlobal.optiuniMeniu;
+    next();
+})
 
 app.set("view engine", "ejs");
 
@@ -42,7 +74,7 @@ console.log("Director de lucru:", process.cwd());
 
 vectorFoldere = ["temp", "temp1", "backup"];
 
-for (let folder of vectorFoldere) {
+for (let folder of vectorFoldere){
     // let caleFolder = __dirname + "/" + folder;
     let caleFolder = path.join(__dirname, folder);
     if (!fs.existsSync(caleFolder)) {
@@ -88,6 +120,59 @@ app.get("/despre", function (req, res) {
 // });
 
 // app.get(/[a-zA-Z0-9]\.(ejs)+$/i, function (req, res) {
+
+app.get("/produse",function(req, res){
+
+
+    //TO DO query pentru a selecta toate produsele
+    //TO DO se adauaga filtrarea dupa tipul produsului
+    //TO DO se selecteaza si toate valorile din enum-ul categ_prajitura
+
+
+    client.query("select * from unnest(enum_range(null::categ_prajitura))", function(err, rezCategorie){ ///functia unnest() - il face sa fie vector de siruri
+        if(err)
+        {
+            console.log(err);
+            afiseazaEroare(res, 2);
+        }
+        else{
+            let conditieWhere="";
+        if(req.query.tip)
+            conditieWhere=` where tip_produs='${req.query.tip}'`
+
+        client.query("select * from prajituri " +conditieWhere , function( err, rez){
+            console.log(300)
+            if(err){
+                console.log(err);
+                afiseazaEroare(res, 2);
+            }
+            else
+                res.render("pagini/produse", {produse:rez.rows, optiuni:rezCategorie.rows}); ///renderul trimite mesajul de la cerere
+        });
+        }
+    })
+});
+
+
+app.get("/produs/:id",function(req, res){
+    console.log(req.params);
+   
+    client.query(`select * from prajituri where id='${req.params.id}'`, function( err, rezultat){
+        if(err){
+            console.log(err);
+            afiseazaEroare(res, 2);
+        }
+        else
+            res.render("pagini/produs", {prod:rezultat.rows[0]});
+    });
+});
+
+client.query("select * from unnest(enum_range(null::categ_prajitura))",function(err, rez){
+    console.log(err);
+    console.log(rez);
+})
+
+
 app.get("/*.ejs", function (req, res) {
     afiseazaEroare(res, 400);
 });
@@ -202,9 +287,12 @@ function afiseazaEroare(res, _identificator, _titlu = "titlu default", _text = "
 
 function compileazaScss(caleScss, caleCss) {
 
+    console.log("cale:",caleCss);
     if(!caleCss){
-    let vectorCale = caleScss.split("\\");
-    let numeFisierExt = vectorCale[vectorCale.length - 1];
+    // let vectorCale = caleScss.split("\\");
+    // let numeFisierExt = vectorCale[vectorCale.length - 1];
+    let numeFisierExt=path.basename(caleScss);
+    //let numeFisCss=path.basename(caleCss);
     let numeFis = numeFisierExt.split(".")[0];
     caleCss = numeFis + ".css";
     }
@@ -216,8 +304,14 @@ function compileazaScss(caleScss, caleCss) {
         caleCss = path.join(obGlobal.folderCss, caleCss);
     }
 
-    let vectorCale = caleCss.split("\\");
-    let numeFisCss = vectorCale[vectorCale.length - 1];
+    // let vectorCale = caleCss.split("\\");
+    // let numeFisCss = vectorCale[vectorCale.length - 1];
+
+    let caleBackup=path.join(obGlobal.folderBackup, "resurse/css");
+    if(!fs.existsSync(caleBackup))
+        fs.mkdirSync(caleBackup, {recursive:true})
+
+    let numeFisCss=path.basename(caleCss);
     console.log(numeFisCss);
     if(fs.existsSync(caleCss)){
         fs.copyFileSync(caleCss, path.join(obGlobal.folderBackup, numeFisCss));

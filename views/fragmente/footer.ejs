@@ -1,3 +1,4 @@
+<footer></footer>
 <section id="footer">
   
     <p>Contact:</p>
@@ -15,6 +16,7 @@
     <br>
     <div class="link">
     <a href="https://goo.gl/maps/DYxfcuZfAWw68jnRA" target="_blank">Adresa</a>
+   
 
   </div>
 
@@ -31,3 +33,9 @@
       <div id="inner1" title="Top">&#129081;</div>
   </a>
 </div>
+
+ <%- locals.optiuniMeniu %>
+ <%- locals.optiuniMeniu[0].unnest %>  <!--asta trebuie in header, dar momentan da eroare -->
+ <p id="banner">Acesta este un proiect scolar. Acceptati cookies? <button id="ok_cookies">Ok</button></p>
+
+</footer>
