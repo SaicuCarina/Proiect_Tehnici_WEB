@@ -9,16 +9,16 @@ window.addEventListener("load",function(){
         //input-uri
         let val_nume=document.getElementById("inp-nume").value.toLowerCase();
 
-        let calorii = document.getElementsByName("gr_rad");
-        let val_calorii;
-        for(let r of calorii){
+        let pagini = document.getElementsByName("gr_rad");
+        let val_pagini;
+        for(let r of pagini){
             if(r.checked){
-                val_calorii=r.value;
+                val_pagini=r.value;
             }
         }
         
-        if(val_calorii!="toate"){
-            [cal_a, cal_b] = val_calorii.split(":"); //le desparte dar sunt stringuri
+        if(val_pagini!="toate"){
+            [cal_a, cal_b] = val_pagini.split(":"); //le desparte dar sunt stringuri
            var cal_a = parseInt(cal_a);
            var cal_b = parseInt(cal_b); // convertim din string in int
         }
@@ -38,8 +38,8 @@ window.addEventListener("load",function(){
 
             let cond1=(nume.startsWith(val_nume));
 
-            let prod_calorii=parseInt(prod.getElementsByClassName("val-calorii")[0].innerHTML);
-            let cond2=(val_calorii=="toate" || cal_a <= prod_calorii && prod_calorii < cal_b);
+            let prod_pagini=parseInt(prod.getElementsByClassName("val-pagini")[0].innerHTML);
+            let cond2=(val_pagini=="toate" || cal_a <= prod_pagini && prod_pagini < cal_b);
             
             let pret=parseFloat(prod.getElementsByClassName("val-pret")[0].innerHTML);
             let cond3=(val_pret <= pret)

@@ -7,9 +7,14 @@ const { Client } = require("pg");
 const { Console } = require("console");
 const AccesBD= require("./module_proprii/accesbd.js");
 
+const formidable=require("formidable");
+const {Utilizator}=require("./module_proprii/utilizator.js")
+const session=require('express-session');
+const Drepturi = require("./module_proprii/drepturi.js");
+
 AccesBD.getInstanta().select(
-    {tabel:"prajituri",
-    campuri:["nume", "pret", "calorii"],
+    {tabel:"carti",
+    campuri:["nume", "pret", "pagini"],
     conditiiAnd:["pret>7"]},
     function (err, rez){
         console.log(err);
@@ -47,7 +52,7 @@ obGlobal = {
     optiuniMeniu:[]
 };
 
-client.query("select * from unnest(enum_range(null::tipuri_produse))", function(err, rezCategorie){ ///functia unnest() - il face sa fie vector de siruri
+client.query("select * from unnest(enum_range(null::tipuri_expediere))", function(err, rezCategorie){ ///functia unnest() - il face sa fie vector de siruri
     if(err){
         console.log(err);
     }
@@ -72,7 +77,7 @@ console.log("Folder proiect:", __dirname);
 console.log("Cale fisier:", __filename);
 console.log("Director de lucru:", process.cwd());
 
-vectorFoldere = ["temp", "temp1", "backup"];
+vectorFoldere = ["temp", "temp1", "backup", "poze_uplodate"];
 
 for (let folder of vectorFoldere){
     // let caleFolder = __dirname + "/" + folder;
@@ -129,7 +134,7 @@ app.get("/produse",function(req, res){
     //TO DO se selecteaza si toate valorile din enum-ul categ_prajitura
 
 
-    client.query("select * from unnest(enum_range(null::categ_prajitura))", function(err, rezCategorie){ ///functia unnest() - il face sa fie vector de siruri
+    client.query("select * from unnest(enum_range(null::categ_carti))", function(err, rezCategorie){ ///functia unnest() - il face sa fie vector de siruri
         if(err)
         {
             console.log(err);
@@ -140,7 +145,7 @@ app.get("/produse",function(req, res){
         if(req.query.tip)
             conditieWhere=` where tip_produs='${req.query.tip}'`
 
-        client.query("select * from prajituri " +conditieWhere , function( err, rez){
+        client.query("select * from carti " +conditieWhere , function( err, rez){
             console.log(300)
             if(err){
                 console.log(err);
@@ -157,7 +162,7 @@ app.get("/produse",function(req, res){
 app.get("/produs/:id",function(req, res){
     console.log(req.params);
    
-    client.query(`select * from prajituri where id='${req.params.id}'`, function( err, rezultat){
+    client.query(`select * from carti where id='${req.params.id}'`, function( err, rezultat){
         if(err){
             console.log(err);
             afiseazaEroare(res, 2);
@@ -167,7 +172,92 @@ app.get("/produs/:id",function(req, res){
     });
 });
 
-client.query("select * from unnest(enum_range(null::categ_prajitura))",function(err, rez){
+///////////////////////// Utilizatori
+
+app.post("/inregistrare",function(req, res){
+    var username;
+    var poza;
+    console.log("ceva");
+    var formular= new formidable.IncomingForm()
+    formular.parse(req, function(err, campuriText, campuriFisier ){//4
+        console.log("Inregistrare:",campuriText);
+
+        console.log(campuriFisier);
+        var eroare="";
+
+        var utilizNou=new Utilizator();
+        try{
+            utilizNou.setareNume=campuriText.nume;
+            utilizNou.setareUsername=campuriText.username;
+            utilizNou.email=campuriText.email
+            utilizNou.prenume=campuriText.prenume
+            
+            utilizNou.parola=campuriText.parola;
+            utilizNou.culoare_chat=campuriText.culoare_chat;
+            utilizNou.poza= poza;
+            Utilizator.getUtilizDupaUsername(campuriText.username, {}, function(u, parametru ,eroareUser ){
+                if (eroareUser==-1){//nu exista username-ul in BD
+                    utilizNou.salvareUtilizator();
+                }
+                else{
+                    eroare+="Mai exista username-ul";
+                }
+
+                if(!eroare){
+                    res.render("pagini/inregistrare", {raspuns:"Inregistrare cu succes!"})
+                    
+                }
+                else
+                    res.render("pagini/inregistrare", {err: "Eroare: "+eroare});
+            })
+            
+
+        }
+        catch(e){ 
+            console.log(e);
+            eroare+= "Eroare site; reveniti mai tarziu";
+            console.log(eroare);
+            res.render("pagini/inregistrare", {err: "Eroare: "+eroare})
+        }
+    
+
+
+
+    });
+    formular.on("field", function(nume,val){  // 1 
+	
+        console.log(`--- ${nume}=${val}`);
+		
+        if(nume=="username")
+            username=val;
+    }) 
+    formular.on("fileBegin", function(nume,fisier){ //2
+        console.log("fileBegin");
+		
+        console.log(nume,fisier);
+		//TO DO in folderul poze_uploadate facem folder cu numele utilizatorului
+        let folderUser=path.join(__dirname, "poze_uploadate",username);
+        //folderUser=__dirname+"/poze_uploadate/"+username
+        console.log(folderUser);
+        if (!fs.existsSync(folderUser))
+            fs.mkdirSync(folderUser);
+        fisier.filepath=path.join(folderUser, fisier.originalFilename)
+        poza=fisier.originalFilename
+        //fisier.filepath=folderUser+"/"+fisier.originalFilename
+
+    })    
+    formular.on("file", function(nume,fisier){//3
+        console.log("file");
+        console.log(nume,fisier);
+    }); 
+});
+
+
+
+
+
+
+client.query("select * from unnest(enum_range(null::categ_carti))",function(err, rez){
     console.log(err);
     console.log(rez);
 })
@@ -177,31 +267,29 @@ app.get("/*.ejs", function (req, res) {
     afiseazaEroare(res, 400);
 });
 
-app.get("/*", function (req, res) {
-    try {
-        res.render("pagini" + req.url, function (err, rezRandare) {
-            if (err) {
-                if (err.message.startsWith("Failed to lookup view")) {
-                    // afiseazaEroare(res, { _identificator: 404, _titlu: "Pagina nu a fost gasita", _text: "Pagina nu a fost gasita", _imagine: "/resurse/images/erori/lupa.jpg" });
-                    afiseazaEroare(res, 404);
-                }
-            }
-            else {
-                afiseazaEroare(res);
-            }
-        });
-    }
-    catch (err) {
-        if (err.message.startsWith("Cannot find module")) {
-            afiseazaEroare(res, 404);
-        }
-        else {
-            afiseazaEroare(res);
-        }
 
+app.get("/*", function(req, res){
+    try{
+    res.render("pagini"+req.url, function(err, rezRandare){
+        if(err){
+            // console.log(err);  
+            if(err.message.startsWith("Failed to lookup view"))
+                // afiseazaEroare(res,{identificator:404, titlu:"ceva"});
+                afiseazaEroare(res,404,"ceva");
+            else
+                afiseazaEroare(res);  
+        }
+        else{
+            // console.log(rezRandare);
+            res.send(rezRandare);
+        }    
+    });
+    }catch(err){
+        if(err.message.startsWith("Cannot find module")){
+            afiseazaEroare(res,404);
+        }
     }
-
-});
+});;
 
 function initErori() {
 
