@@ -55,6 +55,7 @@ window.addEventListener("load",function(){
 
     document.getElementById("resetare").onclick= function(){
        
+        if (confirm("Esti sigur ca vrei sa resetezi toate filtrele?")){
         document.getElementById("inp-nume").value="";
        
         document.getElementById("inp-pret").value=document.getElementById("inp-pret").min;
@@ -65,6 +66,8 @@ window.addEventListener("load",function(){
         for (let prod of produse){
             prod.style.display="block";
         }
+    }
+
     }
 
     function sortare(semn){

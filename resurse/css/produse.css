@@ -41,8 +41,10 @@ main{
     background-color: var(--culoare3);
 }
 .grid-produse .produs .info-prod p{
-    width:30%;
+    width:100px;
     text-align:center;
+    margin-left: var(--spatiere-pagina);
+    display: block;
 }
 
 .grid-produse .produs p.categorie{
@@ -65,14 +67,15 @@ main{
     display: inline-block;
     width:60px;
     height:60px;
-    background-color: var(--culoare2);
+    background-color: transparent;
     position:absolute;
-    bottom:0.5rem;
-    right:0.5rem;
     border-radius: 0.5rem;
     text-align: center;
     padding:0.3rem;
     border:1px solid transparent;
+    box-shadow: inset 0px 0 10px 5px var(--culoare2);
+    margin-left: 400px;
+    margin-top: 5px;
 }
 
 .selecteaza-cos:hover{

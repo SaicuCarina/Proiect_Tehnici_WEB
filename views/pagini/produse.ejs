@@ -15,6 +15,14 @@
     <main>
         <label> Nume: <input type="text" id="inp-nume"></label>
         <!--<label> Maxim calorii: <input type="number" id="inp-calorii" value="10000"></label>-->
+        <label> Cuvinte cheie: <input type="text" id="inp-cheie"></label>
+
+        <label class="selecteaza-noutati">
+            Noutati:
+            <input type="checkbox" class="select-noutati" autocomplete="off">
+        </label>
+
+
         <div> Numar pagini:<!-- trebuie sa aiba acelasi name ca sa formeze un grup -->
             <p><label>Scazut (numar pagini &lt; 100)
                 <input id="i_rad1"  name="gr_rad" value="0:100" type="radio"/>
@@ -59,6 +67,12 @@
                         
                         <div class="info-prod">
                             <p class="categorie">Categorie: <span class="val-categorie"><%- prod.categorie%></span></p>
+
+                            <label class="selecteaza-cos">
+                                Select:<br/>
+                                <input type="checkbox" class="select-cos" value="<%-prod.id %>" autocomplete="off">
+                            </label>
+
                         </div>
 
                         <div class="column-wrapper">
@@ -79,15 +93,13 @@
                         
                         </div>    
                     </div>
-                        <label class="selecteaza-cos">
-                            Selectează:<br/>
-                            <input type="checkbox" class="select-cos" value="<%-prod.id %>" autocomplete="off">
-                        </label>
                     </article>
                 <% }%>
             </div>
         </section>
     </main>
+
+    <br>
 
     <%- include("../fragmente/footer") %>
     </body>
