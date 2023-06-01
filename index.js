@@ -401,34 +401,6 @@ client.query("select * from unnest(enum_range(null::categ_carti))",function(err,
 })
 
 
-app.get("/*.ejs", function (req, res) {
-    afiseazaEroare(res, 400);
-});
-
-
-app.get("/*", function(req, res){
-    try{
-    res.render("pagini"+req.url, function(err, rezRandare){
-        if(err){
-            // console.log(err);  
-            if(err.message.startsWith("Failed to lookup view"))
-                // afiseazaEroare(res,{identificator:404, titlu:"ceva"});
-                afiseazaEroare(res,404,"ceva");
-            else
-                afiseazaEroare(res);  
-        }
-        else{
-            // console.log(rezRandare);
-            res.send(rezRandare);
-        }    
-    });
-    }catch(err){
-        if(err.message.startsWith("Cannot find module")){
-            afiseazaEroare(res,404);
-        }
-    }
-});;
-
 /******************Administrare utilizatori */
 app.get("/useri", function(req, res){
    
@@ -622,6 +594,63 @@ fs.watch(obGlobal.folderScss, function (event, filename) {
         }
     }
 });
+
+app.get("/cod/:username/:token", function (req, res) {
+    console.log(req.params);
+    try {
+        Utilizator.getUtilizDupaUsername(req.params.username, { res: res, token: req.params.token }, function (u, obparam) {
+            AccesBD.getInstanta().update(
+                {
+                    tabel: "utilizatori",
+                    campuri: { confirmat_mail: 'true' },
+                    conditiiAnd: [`cod='${obparam.token}'`]
+                },
+                function (err, rezUpdate) {
+                    if (err || rezUpdate.rowCount == 0) {
+                        console.log("Cod:", err);
+                        afisareEroare(res, 3);
+                    }
+                    else {
+                        res.render("pagini/confirmare.ejs");
+                    }
+                })
+        })
+    }
+    catch (e) {
+        console.log(e);
+        afisareEroare(res, 2);
+    }
+})
+
+app.get("/*.ejs", function (req, res) {
+    afiseazaEroare(res, 400);
+});
+
+
+app.get("/*", function(req, res){
+    try{
+    res.render("pagini"+req.url, function(err, rezRandare){
+        if(err){
+            // console.log(err);  
+            if(err.message.startsWith("Failed to lookup view"))
+                // afiseazaEroare(res,{identificator:404, titlu:"ceva"});
+                afiseazaEroare(res,404,"ceva");
+            else
+                afiseazaEroare(res);  
+        }
+        else{
+            // console.log(rezRandare);
+            res.send(rezRandare);
+        }    
+    });
+    }catch(err){
+        if(err.message.startsWith("Cannot find module")){
+            afiseazaEroare(res,404);
+        }
+    }
+});;
+
+
 app.listen(8080);
 
 console.log("Serverul a pornit!");

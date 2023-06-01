@@ -108,13 +108,15 @@ class AccesBD{
         if(conditiiAnd.length>0)
             conditieWhere=`where ${conditiiAnd.join(" and ")}`; 
         let comanda=`select ${campuri.join(",")} from ${tabel} ${conditieWhere}`;
+        console.log("***");
         console.error(comanda);
+        console.log(callback);
         /*
         comanda=`select id, camp1, camp2 from tabel where camp1=$1 and camp2=$2;
         this.client.query(comanda,[val1, val2],callback)
 
         */
-        this.client.query(comanda,parametriQuery, callback)
+        this.client.query(comanda,parametriQuery,callback)
     }
     async selectAsync({tabel="",campuri=[],conditiiAnd=[]} = {}){
         let conditieWhere="";
