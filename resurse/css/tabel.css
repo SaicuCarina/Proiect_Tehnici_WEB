@@ -3,10 +3,10 @@ table, th, td {
     width: 500px;
   }
 
-  caption {
+  /* caption {
     display: table-caption;
     text-align: center;
-  }
+  } */
 
   tr:nth-child(even) {
     background-color: white;

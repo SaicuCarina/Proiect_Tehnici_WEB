@@ -244,7 +244,7 @@ a:hover .arrow {
     #watermark
     {
         display: block;
-        position: fixed;
+        position: fixed; /* apare pe toate paginile */
         bottom:0;
         color:rgba(0,0,0,0.4);
         right:0;
@@ -283,7 +283,7 @@ a:hover .arrow {
     
         margin-left:3cm;
         margin-right:1cm;
-        border-radius: 20cm;
+        /* border-radius: 20cm; */
     }
     
     @page:right{
@@ -363,12 +363,12 @@ div.link:hover{
 }
 
 div.link:visited{
-    color: var(--culoare-background);
+    color: var(--culoare1);
 }
 
 div.link:active {
-    border: 1px solid var(--culoare6);
-    transition: all 0.5s linear;
+    border: 1px solid var(--mov-inchis);
+    transition: all 1s linear;
 }
 
 a.link[href^="http"]::before{
@@ -475,3 +475,10 @@ hr::after {
     filter: blur(0.4px);
 }
   
+mn {
+    color: var(--mov-inchis);
+}
+
+mi {
+    font-weight: bold;
+}

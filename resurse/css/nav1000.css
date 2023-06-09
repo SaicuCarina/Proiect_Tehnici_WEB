@@ -4,11 +4,11 @@ body{
 }
 
 #acasa-mic{
-    display: none;
+    display: block;
 }
 
 #acasa{
-    display: block;
+    display: none;
 }
 
 a:hover .arrow{
