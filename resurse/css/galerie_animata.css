@@ -1,136 +1,142 @@
-.galerie_animata {
-    margin-left: auto;
-    margin-right: auto;
+.galerie {
+  width: 500px;
+  height: 375px;
+  position: relative;
+  margin-bottom: 5rem;
+}
+.galerie figcaption {
+  position: absolute;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  text-align: center;
+}
+.galerie figure {
+  position: relative;
+  width: 500px;
+  height: 375px;
+}
+
+/*cum calculam timpii:
+- avem 7 poze; vrem pentru fiecare un timp de afisare de 1.5 secunde si o trecere spre urmatoarea poza de 1.5 secunde
+- rezulta 3 secunde pentru fiecare imagine
+- 7imagini * 3secunde =21 secunde in total pentru animatie (animation-duration) si fiecare poza cu un delay = 3* numarul de ordine
+- momentul in care trebuie ascunsa poza si pusa in spatele celorlalte (ca sa isi astepte randul pentru noua animatie:
+il calculam cu formula  timp_afisare(normal+trecerea la urmatoarea poza)/timp_total*100 = 3/21*100 =  14.285714(aproximativ)
+100%..... 21s
+x%........3s
+
+- calculam 100-14.285714=85.714286 - la acest moment imaginea trebuie sa se vada in spatele imaginii care se afiseaza in mod curent (ca sa se vada si cat timp se realizeaza efectul de schimbare a imaginii
+*/
+#container-galerie-animata figure {
+  position: absolute;
+  left: -20px;
+  top: -20px;
+  z-index: 0;
+  border: 10px solid black;
+  animation-name: gal_animata;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-duration: 18s;
+  display: none;
+}
+#container-galerie-animata:hover figure {
+  animation-play-state: paused;
+}
+#container-galerie-animata figure:nth-of-type(2) {
+  display: block;
+  animation-delay: 0s;
+}
+#container-galerie-animata figure:nth-of-type(3) {
+  display: block;
+  animation-delay: 3s;
+}
+#container-galerie-animata figure:nth-of-type(4) {
+  display: block;
+  animation-delay: 6s;
+}
+#container-galerie-animata figure:nth-of-type(5) {
+  display: block;
+  animation-delay: 9s;
+}
+#container-galerie-animata figure:nth-of-type(6) {
+  display: block;
+  animation-delay: 12s;
+}
+#container-galerie-animata figure:nth-of-type(7) {
+  display: block;
+  animation-delay: 15s;
+}
+
+@keyframes gal_animata {
+  0% {
+    z-index: 10;
+    opacity: 0;
+    clip-path: inset(0% 50%);
   }
-  .galerie_animata figcaption {
-    position: absolute;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.7);
-    width: 100%;
-    text-align: center;
-    overflow: hidden;
+  16.6666666667% {
+    opacity: 1;
+    z-index: 10;
+    clip-path: inset(0% 0%);
   }
-  .galerie_animata figure {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .galerie_animata figure img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  #galanim {
-    overflow: hidden;
-  }
-  #galanim figure {
-    position: absolute;
+  33.3333333333% {
+    opacity: 1;
+    clip-path: inset(0% 0%);
     z-index: 0;
-    animation-name: gal_exemplu;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-fill-mode: forwards;
-    animation-duration: 20s;
-    transform-origin: center;
   }
-  #galanim:hover figure {
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    animation-play-state: paused;
-    cursor: pointer;
+  66.6666666667% {
+    opacity: 1;
+    clip-path: inset(0% 0%);
+    z-index: -10;
   }
-  
-  #galanim figure:nth-child(0) {
-    animation-delay: 0s;
+  100% {
+    opacity: 1;
+    z-index: -10;
   }
-  
-  #galanim figure:nth-child(1) {
-    animation-delay: 2s;
+}
+@keyframes gal_animata--ex {
+  0% {
+    z-index: 10;
+    opacity: 1;
   }
-  
-  #galanim figure:nth-child(2) {
-    animation-delay: 4s;
+  10% {
+    transform: skewX(0deg);
   }
-  
-  #galanim figure:nth-child(3) {
-    animation-delay: 6s;
+  13% {
+    opacity: 1;
+    transform: skewX(55deg);
+  } /* de  aici doresc sa descresc si opacitatea;*/
+  33.3332% {
+    z-index: 10;
+    transform: skewX(90deg);
   }
-  
-  #galanim figure:nth-child(4) {
-    animation-delay: 8s;
+  33.3333% {
+    opacity: 0;
+    z-index: 10;
+    transform: skewX(0deg);
+  } /* il ascund cat mai in spate sa nu vina peste imaginile care erau mai sus in html decat el*/
+  33.3334% {
+    z-index: 0;
   }
-  
-  #galanim figure:nth-child(5) {
-    animation-delay: 10s;
+  66.6665% {
+    opacity: 0;
   }
-  
-  #galanim figure:nth-child(6) {
-    animation-delay: 12s;
+  66.6667% {
+    opacity: 0;
+    transform: skewX(0deg);
+    z-index: 0;
   }
-  
-  #galanim figure:nth-child(7) {
-    animation-delay: 14s;
+  66.67% {
+    opacity: 1;
   }
-  
-  #galanim figure:nth-child(8) {
-    animation-delay: 16s;
+  100% {
+    opacity: 1;
+    z-index: 0;
   }
-  
-  #galanim figure:nth-child(9) {
-    animation-delay: 18s;
-  }
-
-  #galanim figure:nth-child(10) {
-    animation-delay: 20s;
-  }
-
-  #galanim figure:nth-child(11) {
-    animation-delay: 22s;
-  }
-
-  #galanim figure:nth-child(12) {
-    animation-delay: 24s;
-  }
-
-  #galanim figure:nth-child(13) {
-    animation-delay: 26s;
-  }
-
-  #galanim figure:nth-child(14) {
-    animation-delay: 28s;
-  }
-
-  #galanim figure:nth-child(15) {
-    animation-delay: 30s;
-  }
-  
+}
+@media only screen and (max-width: 1100px) {
   #container-galerie-animata {
-    border: 3px solid #000;
-    width: 400px;
-    height: 400px;
-    margin: auto;
-    position: relative;
-    overflow: hidden;
+    display: none;
   }
-  
-  @keyframes gal_exemplu {
-    0% {
-        width: 100%;
-        height: 0;
-        padding-bottom: 50%;
-    }
-    
-    100% {
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-      }
-    
-  }
+}

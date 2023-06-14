@@ -608,7 +608,7 @@ function initErori() { //citeste erorile din JSON
 function initImagini() {
 
     var continut = fs.readFileSync(path.join(__dirname, "/resurse/json/galerie.json")).toString("utf-8");
-    obGlobal.obImagini = JSON.parse(continut);
+    obGlobal.obImagini = JSON.parse(continut); //transformam din string in obiect, il parsam
 
     let vImagini = obGlobal.obImagini.imagini;
 
@@ -627,16 +627,16 @@ function initImagini() {
     for (let imag of vImagini) {
         [nume_fisier, extensie] = imag.fisier.split(".");
 
-        imag.fisier_mediu = "/" + path.join(obGlobal.obImagini.cale_galerie, "mediu", nume_fisier + "_mediu" + ".webp");
+        imag.fisier_mediu = "/" + path.join(obGlobal.obImagini.cale_galerie, "mediu", nume_fisier + "_mediu" + ".webp"); //cale pt imagine mediu
         imag.fisier_mic = "/" + path.join(obGlobal.obImagini.cale_galerie, "mic", nume_fisier + "_mic" + ".webp");
 
-        let caleAbsFisMediu = path.join(__dirname, imag.fisier_mediu);
+        let caleAbsFisMediu = path.join(__dirname, imag.fisier_mediu); //calea absoluta, ca sa putem folosi sharp
         let caleAbsFisMic = path.join(__dirname, imag.fisier_mic);
 
         sharp(path.join(caleAbs, imag.fisier)).resize(1000, 1000).toFile(caleAbsFisMediu);
         sharp(path.join(caleAbs, imag.fisier)).resize(300, 300).toFile(caleAbsFisMic);
 
-        imag.fisier = "/" + path.join(obGlobal.obImagini.cale_galerie, imag.fisier);
+        imag.fisier = "/" + path.join(obGlobal.obImagini.cale_galerie, imag.fisier); //in imag.fisier o sa am toata calea ca sa o trimit spre pagina
 
     }
 }
@@ -681,10 +681,10 @@ function compileazaScss(caleScss, caleCss) {
     // let numeFisierExt = vectorCale[vectorCale.length - 1];
     let numeFisierExt=path.basename(caleScss);
     //let numeFisCss=path.basename(caleCss);
-    let numeFis = numeFisierExt.split(".")[0];
+    let numeFis = numeFisierExt.split(".")[0]; //ca sa putem schimba extensia
     caleCss = numeFis + ".css";
     }
-    if(!path.isAbsolute(caleScss)) {
+    if(!path.isAbsolute(caleScss)) { //daca nu este absoluta => este relativa la foldere css
         caleScss = path.join(obGlobal.folderScss, caleScss);
     }
 
@@ -705,7 +705,7 @@ function compileazaScss(caleScss, caleCss) {
         fs.copyFileSync(caleCss, path.join(obGlobal.folderBackup, numeFisCss));
     }
 
-    rez = sass.compile(caleScss, {"sourceMap": true});
+    rez = sass.compile(caleScss, {"sourceMap": true}); //rezultatul din compilarea fisierului
     fs.writeFileSync(caleCss, rez.css);
     console.log("Compilare SCSS", rez);
 }
@@ -726,7 +726,7 @@ initErori();
 initImagini();
 compileazaScss("a.scss");
 
-vFisiere = fs.readdirSync(obGlobal.folderScss);
+vFisiere = fs.readdirSync(obGlobal.folderScss); //primeste o cale catre un direct si imi vectorul cu numele fis din acel director
 console.log("fisiere:");
 console.log(vFisiere);
 

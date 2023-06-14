@@ -24,12 +24,16 @@
   <div id="grid-pagina">
       <section id="welcome">
         <h1>Raftul comun</h1>
-
+        
  
       </section>
 
       <section id="prezentare">
         <h2>Acasa</h2>
+
+        <p>
+          <%- locals.ip %>
+        </p>
 
         <% if(!locals.utilizator) { %>
           <form id="form_inreg"  method="post" class="date"  action="/login"  enctype="multipart/form-data">

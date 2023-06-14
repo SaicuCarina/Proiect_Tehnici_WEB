@@ -16,8 +16,14 @@
  counter-reset: nrimag 0;  /* nrimag=3 */
 }
 #grid-galerie img{
-  width: 100%;
+  /* width: 100%; */
   transition:all 1.2s linear ;
+  max-width: 300px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    min-height: 200px;
+    min-width: 250px;
 }
 
 #grid-galerie img:hover{
@@ -59,9 +65,9 @@
       ". .";
   }
 }
-
+/* 
 @media screen and (max-width:600px){
   #grid-galerie {
       display:block;
   }
-}
+} */
