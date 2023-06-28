@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html  lang="ro">
+    <head>
+
+        <link rel="stylesheet" href="/resurse/css/jucarii.css" type="text/css" />
+        <title>Jucarii</title>
+        <%- include("../fragmente/head") %>     
+        <script type="text/javascript" src=/resurse/js/jucarii.js></script>
+
+    </head>
+    <body>
+    <%- include("../fragmente/header") %>
+
+    <main>
+
+        <h1>Jucarii</h1>
+        <br>
+        <br>
+        <form>
+            <label for="selectNume">Selectati numele:</label>
+            <select id="selectNume" name="nume" multiple>
+              <option value="irina.ciocan@unibuc.ro">Nume 1</option>
+              <option value="irina.ciocan@gmail.com">Nume 2</option>
+              <option value="profprofprof007@gmail.com">Nume 3</option>
+            </select>
+            <button type="submit">Trimite</button>
+          </form>
+          <br>
+
+        <label>Select simplu:
+            <select id="inp-categorie">
+                <option value="Ascendent">Ascendent</option>
+                <option value="Descendent">Descendent</option>
+            </select>
+            <button id="sort">Sorteaza</button>
+        </label>
+        <br>
+        <br>
+        <button id="filtrare">Filtreaza</button>
+        <br><br>
+        <div class="grid-jucarii">
+            <% for( let jucarii of locals.jucarii) { %>
+        
+        <article class="jucarii">
+            <div>
+                <h2 class="titlu">Nume: <span class="val-nume"><%- jucarii.nume%></span></h2>
+                <br>
+                <label class="pret">
+                    Pret: 
+                    <input type="checkbox"><%- jucarii.pret%>
+                  </label>
+                <br> 
+                <p>Varsta nimima: <span class="val-varsta"><%- jucarii.varsta_minima%></span></p>
+                <br>
+                <% 
+                        jucarii.culori.sort(function (a, b) {
+                            return b.length - a.length;
+                        });
+                    %>
+                    <ul>
+                        <% for (let culoare of jucarii.culori) { %>
+                        <li><%- culoare %></li>
+                        <% } %>
+                    </ul>
+                    <% if (jucarii.varsta_minima >= 0 && jucarii.varsta_minima <= 6) { %>
+                        <p>Potrivit pentru gradinita.</p>
+                    <% } %>
+                <br>
+                <p class="data"><b>Data adăugare: </b><time datetime="YYYY-MM-DD" class="val-data"><%- jucarii.data_adaugare %></time></p>
+                <button id="sterge">Sterge</button>
+            </div>
+    </article>
+    <% }%>
+</div>
+            </div>
+        </section>
+    </main>
+
+    <br>
+
+    <%- include("../fragmente/footer") %>
+    </body>
+</html>

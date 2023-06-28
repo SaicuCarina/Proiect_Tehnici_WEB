@@ -30,7 +30,7 @@ body.dark{
     --culoare6:#7654ef;
     --culoare7:#4c23e1;
     --mov:#7b127b;
-    --culoare-background:#eaa0f7;
+    --culoare-background:#a546a5;
     --mov-inchis:#6a016a;
 }
 
@@ -401,13 +401,9 @@ video {
     color: black;
 }
 
-
-video::cue:first-of-type {
-
-    display: flex;
-    justify-content: center; /* Centrare pe orizontală */
-    align-items: center; /* Centrare pe verticală */
-    height: 700px; /* Înălțimea containerului */
+#columnc {
+    column-count: 2;
+    column-rule-style: dotted;
 }
 
 #relexie {
@@ -506,6 +502,28 @@ mi {
   }
 
   p::selection {
-    color: var(--negru);
-    background-color: var(--culoare-background);
+    color: var(--mov-inchis);
+    background-color: var(--culoare4);
+}
+
+.theme-wrapper {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 2rem;
+}
+
+.theme-wrapper .custom-switch {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    /* Adjust this value to create spacing between the switch and the icons */
+}
+
+.theme-pic {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    /* Adjust this value to create spacing between the icons */
 }

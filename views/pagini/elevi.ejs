@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html  lang="ro">
+    <head>
+
+        <link rel="stylesheet" href="/resurse/css/elevi.css" type="text/css" />
+        <title>Elevi</title>
+        <%- include("../fragmente/head") %>     
+        <script type="text/javascript" src=/resurse/js/elevi.js></script>
+
+    </head>
+    <body>
+    <%- include("../fragmente/header") %>
+
+    <main>
+        <br>
+        <form id="emailForm">
+            <input type="text" id="emailInput" placeholder="E-mail" required>
+            <button type="submit">Trimite email</button>
+          </form>
+          <br>
+        <label>Select simplu:
+            <select id="inp-categorie">
+                <option value="Ascendent">Ascendent</option>
+                <option value="Descendent">Descendent</option>
+            </select>
+            <button id="sort">Sorteaza</button>
+        </label>
+        <br>
+        <br>
+        <label> Cauta: <input type="text" id="inp-cauta"></label>
+        <button id="filtrare">Filtreaza</button>
+        <br><br>
+
+        <p id="statistici"></p>
+        <button id="resetare">Reseteaza localStorage</button>
+      
+
+        <h1 id="titlu">Elevi</h1>
+        <br>
+        <div class="grid-elevi">
+            <% for( let elevi of locals.elevi) { %>
+        
+        <article class="elevi">
+            <div>
+                <h2>Nume: <span class="val-nume"><%- elevi.nume%></span></h2>
+                <br>
+                <h2>Prenume: <span class="val-prenume"><%- elevi.prenume%></span></h2>
+                <br>
+                <p>Clasa: <span class="val-clasa"><%- elevi.clasa%></span></p>
+                <br>   
+                <h3>Note:</h3>  
+                    <% const numere=elevi.note.split(",").map(Number);
+                    var sum=0;
+                    for(let i = 0; i < numere.length; i++) { 
+                        sum=sum+numere[i];%>
+                        <ul><%= numere[i] %></ul>
+                        <% }%>
+                    <p class="medie">Medie: <%= sum/numere.length %></p>   
+        
+                <br>
+        </div>
+    </article>
+    <% }%>
+</div>
+            </div>
+        </section>
+    </main>
+
+    <br>
+
+    <%- include("../fragmente/footer") %>
+    </body>
+</html>

@@ -36,6 +36,28 @@ AccesBD.getInstanta().select(
     }
 )
 
+
+
+AccesBD.getInstanta().select(
+    {tabel:"elevi",
+    campuri:["nume", "prenume", "clasa", "note"],
+    },
+    function (err, rez){
+        console.log(err);
+        console.log(rez);
+    }
+)
+
+AccesBD.getInstanta().select(
+    {tabel:"jucarii",
+    campuri:["nume", "pret", "varsta_minima", "culori"],
+    },
+    function (err, rez){
+        console.log(err);
+        console.log(rez);
+    }
+)
+
 var client= new Client({database:"bd_tw",
         user:"carina",
         password:"123456",
@@ -43,17 +65,18 @@ var client= new Client({database:"bd_tw",
         port:5432});
 client.connect();
 
-// client.query("select * from lab8_12", function(err, rez){
-//     console.log("Eroare BD",err);
- 
-//     console.log("Rezultat BD",rez.rows);
-// });
 
-// client.query("select * from produse_test", function(err, rez){
-//     console.log("Eroare BD",err);
+client.query("select * from elevi", function(err, rez){
+    console.log("Eroare BD",err);
  
-//     console.log("Rezultat BD",rez.rows);
-// });
+    console.log("Rezultat BD",rez.rows);
+});
+
+client.query("select * from jucarii", function(err, rez){
+    console.log("Eroare BD",err);
+ 
+    console.log("Rezultat BD",rez.rows);
+});
 
 
 
@@ -189,6 +212,56 @@ app.get("/produse",function(req, res){
     })
 });
 
+app.get("/elevi",function(req, res){
+
+        client.query("select * from elevi", function( err, rez){
+            console.log(300)
+            if(err){
+                console.log(err);
+                afiseazaEroare(res, 2);
+            }
+            else{
+                const idParam = req.query.id;
+
+  
+                if (idParam) {
+  
+                    const ids = idParam.split('+').map(id => parseInt(id));
+
+                    const eleviFiltrati = elevi.filter(elev => ids.includes(elev.id));
+
+
+                    res.send(eleviFiltrati);
+                }
+                else
+            {
+                console.log(rez);
+                res.render("pagini/elevi", {elevi:rez.rows,optiuni:[]}); ///renderul trimite mesajul de la cerere
+            }
+        }
+            });
+});
+
+
+app.get("/jucarii", function(req,res){
+    client.query("select * from jucarii", function( err, rez){
+        //console.log(300)
+        if(err){
+            console.log(err);
+            afiseazaEroare(res, 2);
+        }
+        else{
+            console.log(rez);
+            let zilele_saptamanii = ["Duminica", "Luni", "Marti", "Miercuri", "Joi", "Vineri", "Sambata"];
+            for (let i of rez.rows) {
+                data = new Date(i.data_adaugare);
+                i.data_adaugare = zilele_saptamanii[data.getDay()]+ "("+ data.toLocaleDateString('ro-RO', { day: 'numeric'})+"/"+ data.toLocaleDateString('ro-RO', {month: 'long'}) +"/"+ data.toLocaleDateString('ro-RO', {year: 'numeric' }) + ")" ;
+            }
+            res.render("pagini/jucarii", {jucarii:rez.rows,optiuni:rez.rows});
+
+        }
+    });
+});
 ///////////////////////// Utilizatori
 
 app.post("/inregistrare",function(req, res){
@@ -419,9 +492,32 @@ app.get("/produs/:id",function(req, res){
     });
 });
 
+app.get("/elevi/:id",function(req, res){
+    console.log(req.params);
+   
+    client.query(`select * from elevi where id='${req.params.id}'`, function( err, rezultat){
+        if(err){
+            console.log(err);
+            afiseazaEroare(res, 2);
+        }
+        else
+            res.render("pagini/elevi", {elevi:rezultat.rows[0]});
+    });
+});
 
 
-
+app.get("/jucarii/:id",function(req, res){
+    console.log(req.params);
+   
+    client.query(`select * from jucarii where id='${req.params.id}'`, function( err, rezultat){
+        if(err){
+            console.log(err);
+            afiseazaEroare(res, 2);
+        }
+        else
+            res.render("pagini/jucarii", {jucarii:rezultat.rows[0]});
+    });
+});
 
 
 

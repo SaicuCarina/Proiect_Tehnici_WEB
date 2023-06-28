@@ -24,3 +24,6 @@ body{
     border: none !important;
     border-style: none !important;
 }
+#columnc {
+    column-count: 1;
+}

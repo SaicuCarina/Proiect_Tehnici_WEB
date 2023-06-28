@@ -8,6 +8,7 @@ main{
     display:grid;
     grid-template-columns: 1fr 1fr;
     grid-gap:1rem;
+    overflow: hidden;
 }
 
 .grid-produse .produs{
@@ -22,6 +23,7 @@ main{
     margin-top: 0;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    overflow: hidden;
 }
 
 .grid-produse .produs h3 a{

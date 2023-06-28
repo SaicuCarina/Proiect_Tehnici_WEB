@@ -1,0 +1,67 @@
+#titlu{
+    text-align: center;
+}
+.grid-elevi{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap:10px;
+}
+.grid-elevi .elevi{
+    box-shadow: 0px 0px 0.8rem 0.3rem grey;
+    overflow: hidden;
+}
+
+.grid-elevi::before {
+    counter-reset: numarator; /* Inițializați counter-ul */
+  }
+  
+  .elevi::before {
+    counter-increment: numarator; /* Incrementați counter-ul pentru fiecare celulă */
+  }
+
+.elevi:nth-child(9n+1),
+.elevi:nth-child(9n+9) {
+  /* Culoare 1 */
+  background-color: var(--culoare2);
+}
+
+.elevi:nth-child(9n + 2),
+.elevi:nth-child(9n + 4),
+.elevi:nth-child(9n + 6),
+.elevi:nth-child(9n + 8) {
+  /* Culoare 2 */
+  background-color: var(--culoare4);
+}
+
+.elevi:nth-child(9n + 3),
+.elevi:nth-child(9n + 5),
+.elevi:nth-child(9n + 7) {
+  /* Culoare 3 */
+  background-color: var(--culoare7);
+}
+@media screen and (max-width: 1000px) {
+    .grid-elevi {
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap:1rem;
+    }
+}
+p.medie{
+    text-align: center;
+}
+
+.pret {
+  transition: background-color 3s;
+}
+
+.pret:hover {
+  background-color: red;
+}
+
+.pret:hover:hover {
+  background-color: blue;
+}
+
+.pret:hover:hover:hover {
+  background-color: pink;
+}
